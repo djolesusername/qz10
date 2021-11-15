@@ -1,0 +1,32 @@
+.theme-dark {
+  --buttonDefault: hsl(252, 94%, 67%);
+  --buttobHovert9277FF: hsl(252, 100%, 73%);
+  --background-side: hsl(233, 31%, 17%);
+  --background: hsl(233, 30%, 11%);
+  --button3c252945: hsl(233, 30%, 21%);
+  --button4textcDFE3FA: hsl (231, 73% 93%);
+  --greytext888EBO: hsl(231, 20%, 61%);
+  --purpleText: hsl(231, 37%, 63%);
+  --red: hsl(0, 80%, 63%);
+  --lightRed: (0, 100%, 80%);
+  --text: white;
+}
+.theme-light {
+  --background: hsl(240, 27%, 98%);
+  --text: hsl(228, 29%, 7%);
+}
+html,
+#root {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+nav {
+  background-color: var(--dark-background);
+  color: var(--light-text);
+}
+
+.main-container,
+.App-header {
+  background-color: var(--light-background);
+}
