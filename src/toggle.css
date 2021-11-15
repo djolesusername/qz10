@@ -14,6 +14,9 @@
 .theme-light {
   --background: hsl(240, 27%, 98%);
   --text: hsl(228, 29%, 7%);
+  --background-side: hsl(233, 31%, 17%);
+  --buttonDefault: hsl(252, 94%, 67%);
+  --buttobHovert9277FF: hsl(252, 100%, 73%);
 }
 html,
 #root {
@@ -29,4 +32,15 @@ nav {
 .main-container,
 .App-header {
   background-color: var(--light-background);
+}
+
+.sidebar {
+  background: var(--background-side);
+}
+
+.mainContent {
+  color: var(--buttonDefault);
+}
+.logo-holder2 {
+  background-color: var(--buttobHovert9277FF);
 }

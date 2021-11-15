@@ -1,0 +1,42 @@
+.logo,
+.profilePicture {
+  width: 44px;
+}
+.sidebar {
+  height: 100vh;
+  display: grid;
+  justify-items: center;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 12px 12px 0;
+}
+.navbar-bottom {
+  align-self: flex-end;
+}
+
+.profilePicture {
+  margin-top: 1rem;
+  border-radius: 50%;
+}
+.container--toggle {
+  text-align: center;
+}
+
+.logo-holder {
+  background-color: var(--buttonDefault);
+  width: 100%;
+  text-align: center;
+  padding-top: 36px;
+  border-radius: 0px 12px 0 0;
+  height: 40px;
+  align-self: flex-start;
+  padding-bottom: 0;
+}
+
+.logo-holder2 {
+  height: 40px;
+  border-radius: 12px 0 0 0;
+}
+.logo {
+  transform: translateY(-50%);
+}

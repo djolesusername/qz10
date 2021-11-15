@@ -1,0 +1,5 @@
+.content {
+  display: grid;
+  grid-template-columns: 80px auto;
+  height: 100vh;
+}

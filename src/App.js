@@ -4,6 +4,7 @@ import { keepTheme } from "./themes";
 import data from "./data.json";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Sidebar from "./sidebar";
+import Content from "./content";
 
 function App() {
   useEffect(() => {
@@ -15,8 +16,12 @@ function App() {
   }, []);
   return (
     <React.Fragment>
-      <Sidebar />
-
+      <div className="content">
+        <div className="sidebar">
+          <Sidebar />
+        </div>
+        <Content />
+      </div>
       <Router>
         <Switch>
           <Route path="/"></Route>
