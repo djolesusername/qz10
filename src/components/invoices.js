@@ -1,6 +1,7 @@
 import React from "react";
 import arrow from "../assets/icon-arrow-right.svg";
 import "./invoices.css";
+import { Link, BrowserRouter } from "react-router-dom";
 
 const InvoiceRow = (props) => {
   return (
@@ -12,7 +13,11 @@ const InvoiceRow = (props) => {
       <div> {props.total}</div>
       <div> {props.status} </div>
       <div>
-        <img src={arrow} alt="" />
+        <BrowserRouter>
+          <Link to={`${props.id}`}>
+            <img src={arrow} alt="" />{" "}
+          </Link>
+        </BrowserRouter>
       </div>
     </div>
   );

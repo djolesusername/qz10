@@ -22,6 +22,8 @@ function App() {
       </div>
       <Router>
         <Switch>
+          <Route path="/:invoiceId" exact></Route>
+
           <Route path="/"></Route>
         </Switch>
       </Router>
