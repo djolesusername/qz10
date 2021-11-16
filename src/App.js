@@ -3,16 +3,12 @@ import "./App.css";
 import { keepTheme } from "./themes";
 import data from "./data.json";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Sidebar from "./sidebar";
-import Content from "./content";
+import Sidebar from "./components/sidebar/sidebar";
+import Home from "./components/home";
 
 function App() {
   useEffect(() => {
     keepTheme();
-    data.map((data) => {
-      console.log(data);
-      return 1;
-    });
   }, []);
   return (
     <React.Fragment>
@@ -20,7 +16,9 @@ function App() {
         <div className="sidebar">
           <Sidebar />
         </div>
-        <Content />
+        <div className="invoice-content">
+          <Home data={data} />
+        </div>
       </div>
       <Router>
         <Switch>

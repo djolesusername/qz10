@@ -1,8 +1,8 @@
-import Toggle from "./toggle";
+import Toggle from "../../toggle";
 import React, { PureComponent } from "react";
-import logo from "./assets/logo.svg";
-import profilePic from "./assets/image-avatar.jpg";
-import "./toggle.css";
+import logo from "../../assets/logo.svg";
+import profilePic from "../../assets/image-avatar.jpg";
+import "../../toggle.css";
 import "./sidebar.css";
 
 export default class Sidebar extends PureComponent {

@@ -44,3 +44,11 @@ nav {
 .logo-holder2 {
   background-color: var(--buttobHovert9277FF);
 }
+/*
+.regularButton button {
+  color: var(--buttonDefault);
+}
+button:hover {
+  color: var(--buttobHovert9277FF);
+}
+*/

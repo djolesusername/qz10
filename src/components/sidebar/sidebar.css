@@ -40,3 +40,21 @@
 .logo {
   transform: translateY(-50%);
 }
+
+@media only screen and (max-width: 850px) {
+  .sidebar {
+    height: auto;
+    grid-template-columns: auto auto;
+  }
+  .navbar-bottom {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    align-self: normal;
+    justify-self: flex-end;
+  }
+  .profilePicture {
+    margin: 1rem;
+    justify-self: flex-end;
+  }
+}

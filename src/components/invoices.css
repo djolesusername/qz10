@@ -1,0 +1,4 @@
+.invoice-row {
+  display: grid;
+  grid-template-columns: repeat(6, 16%);
+}

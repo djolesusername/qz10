@@ -1,0 +1,35 @@
+.header,
+.header__end,
+.regularButton {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.regularButton {
+  background-color: hsl(252, 94%, 67%);
+  color: white;
+  border-radius: 120px;
+  text-align: center;
+  height: 2rem;
+  padding-left: 0.33rem;
+  padding-right: 0.5rem;
+  margin: auto;
+}
+.regularButton img {
+  align-self: center;
+  padding: 60%;
+  color: white;
+  background-color: white;
+  border-radius: 50%;
+  height: 0.5rem;
+}
+.regularButton span {
+  margin-left: 1rem;
+  align-self: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.regularButton:hover {
+  background-color: hsl(252, 100%, 73%);
+  cursor: pointer;
+}

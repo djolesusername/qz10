@@ -3,3 +3,16 @@
   grid-template-columns: 80px auto;
   height: 100vh;
 }
+.invoice-content {
+  margin: 4% 14% 14% 14%;
+}
+.header-container {
+  margin-bottom: 1rem;
+}
+@media only screen and (max-width: 850px) {
+  .content {
+    display: grid;
+    grid-template-columns: auto;
+    height: auto;
+  }
+}
