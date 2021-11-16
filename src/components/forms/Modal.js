@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
 import Backdrop from "./Backdrop";
-import { CSSTransition } from "react-transition-group";
+// import { CSSTransition } from "react-transition-group";
 import Input from "./Input";
 import { VALIDATOR_REQUIRE } from "./validators";
 
