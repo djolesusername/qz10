@@ -59,3 +59,34 @@
   opacity: 0;
   transition: all 200ms;
 }
+.grid-3columns {
+  display: grid;
+  grid-template-columns: 32% 32% 32%;
+  padding: 1rem;
+  padding-bottom: 0;
+}
+.grid-1outof3 div input {
+  max-width: 9rem;
+}
+.grid-1outof2 div input {
+  max-width: 12rem;
+}
+.grid-2columns {
+  display: grid;
+  grid-template-columns: 46% 46%;
+  padding: 1rem;
+}
+.grid-full {
+  grid-column: 1 / span3;
+}
+.grid-full div input,
+.grid-1outof3 div input,
+.grid-1outof2 div input {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+.grid-full div,
+.grid-1outof3 div {
+  padding: 0;
+  margin: 0;
+}
