@@ -1,7 +1,11 @@
 .form-control {
   margin: 1rem 0;
 }
-
+.label-error {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-content: space-between;
+}
 .form-control label,
 .form-control input,
 .form-control textarea {
@@ -9,7 +13,8 @@
   border-radius: 4px;
 }
 
-.form-control label {
+.form-control label,
+.errorMessage {
   margin-bottom: 0.3rem;
   font-size: 0.8rem;
   font-weight: 500;
@@ -29,11 +34,13 @@
 }
 
 .form-control--invalid label,
-.form-control--invalid p {
+.form-control--invalid p,
+.errorMessage {
   color: red;
 }
 
 .form-control--invalid input,
-.form-control--invalid textarea {
+.form-control--invalid textarea,
+.errorMessage {
   border-color: red;
 }

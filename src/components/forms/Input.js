@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 
 import { validate } from "./validators";
 import "./Input.css";
@@ -23,14 +23,18 @@ const inputReducer = (state, action) => {
 };
 
 const Input = (props) => {
-  //takes action and current state and returns new state - triggering rerender
-  //second argument is a state with wich component is initialized
-  //useReducer returns current state and dispatch therefore array destructuring
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: "",
     isTouched: false,
     isValid: false,
   });
+
+  const { id, onInput } = props;
+  const { value, isValid } = inputState;
+
+  useEffect(() => {
+    onInput(id, value, isValid);
+  }, [id, value, isValid, onInput]);
 
   const changeHandler = (event) => {
     dispatch({
@@ -45,6 +49,16 @@ const Input = (props) => {
       type: "TOUCH",
     });
   };
+  let optionsHTML = "";
+  const getOptions = (options) => {
+    console.log(Object.entries(options));
+    for (const [key, value] of Object.entries(options)) {
+      optionsHTML += `<option value=${value}> ${key} </option>`;
+    }
+  };
+  if (props.element === "dropdown") {
+    getOptions(props.options);
+  }
 
   const element =
     props.element === "input" ? (
@@ -57,14 +71,19 @@ const Input = (props) => {
         value={inputState.value}
       />
     ) : (
-      <textarea id={props.id} rows={props.rows || 3} onChange={changeHandler} onBlur={touchHandler} value={inputState.value} />
+      <select multiple={true} name={props.id} id={props.id} value={[props.value[0]]} onChange={changeHandler}>
+        {optionsHTML}
+      </select>
     );
 
   return (
     <div className={`form-control ${!inputState.isValid && inputState.isTouched && "form-control--invalid"}`}>
-      <label htmlFor={props.id}>{props.label}</label>
+      <div className="label-error">
+        {" "}
+        <label htmlFor={props.id}>{props.label}</label>{" "}
+        {!inputState.isValid && inputState.isTouched && <span className="errorMessage">{props.errorText}</span>}{" "}
+      </div>
       {element}
-      {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}
     </div>
   );
 };
