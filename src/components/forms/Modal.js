@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from "react";
+import React, { useCallback, useReducer, useState } from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
 import Backdrop from "./Backdrop";
@@ -18,6 +18,8 @@ const options = [
 let date = Date.now();
 
 const ModalOverlay = (props) => {
+  const [itemList, setItemList] = useState([]);
+
   const formReducer = (state, action) => {
     switch (action.type) {
       case "INPUT_CHANGE":
@@ -96,11 +98,18 @@ const ModalOverlay = (props) => {
         value: "30",
         isValid: true,
       },
+      itemList: {
+        value: [],
+        isValid: false,
+      },
     },
     isValid: true,
   });
 
   const inputHandler = useCallback((id, value, isValid) => {
+    console.log(id);
+    console.log(value);
+    console.log(isValid);
     dispatch({
       type: "INPUT_CHANGE",
       value: value,
@@ -237,7 +246,7 @@ const ModalOverlay = (props) => {
             validators={[VALIDATOR_REQUIRE()]}
           />
         </div>
-        <ItemList />
+        <ItemList id="itemlist" itemList={itemList} setItemList={setItemList} />
         <div className={`modal__content ${props.contentClass}`}> {props.children}</div>
         <footer className={`modal__footer ${props.footerClass}`}>{props.footer}</footer>
         {!formState.isValid && <p> Yo, fix it up</p>}
