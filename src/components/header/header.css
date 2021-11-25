@@ -33,3 +33,6 @@
   background-color: hsl(252, 100%, 73%);
   cursor: pointer;
 }
+.header .form-container {
+  display: none;
+}

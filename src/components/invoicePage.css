@@ -1,0 +1,15 @@
+.invoice-header {
+  display: grid;
+  grid-template-columns: 30% 65%;
+}
+.invoice-status,
+.action-buttons {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
+.action-buttons {
+  grid-template-columns: auto auto auto;
+}

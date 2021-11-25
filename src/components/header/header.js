@@ -4,10 +4,15 @@ import plusSign from "../../assets/icon-plus.svg";
 import "./header.css";
 import "../../toggle.css";
 import Modal from "../forms/Modal";
+import UpdateInvoice from "../forms/UpdateInvoice";
 
+/*{import UpdateInvoice from "./forms/UpdateInvoice";
+const [showUpdate, setShowUpdate] = useState(false);
+const openShowUpdate = () => setShowUpdate(true);
+const closeUpdate = () => setShowUpdate(false);}
+*/
 const Header = (props) => {
   const [showNew, setShowNew] = useState(false);
-
   const openShowNew = () => setShowNew(true);
   const closeShowNew = () => setShowNew(false);
 
@@ -17,6 +22,7 @@ const Header = (props) => {
         {" "}
         <div className="form-container"></div>
       </Modal>
+
       <div>
         <h1>Invoices</h1> <p>There are {props.invoices.data.length} invoices </p>
       </div>

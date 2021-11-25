@@ -5,6 +5,7 @@ import data from "./data.json";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Sidebar from "./components/sidebar/sidebar";
 import Home from "./components/home";
+import InvoicePage from "./components/invoicePage";
 
 function App() {
   useEffect(() => {
@@ -17,16 +18,19 @@ function App() {
           <Sidebar />
         </div>
         <div className="invoice-content">
-          <Home data={data} />
+          <Router>
+            <Switch>
+              <Route path="/:invoiceId" exact>
+                <InvoicePage />
+              </Route>
+
+              <Route path="/">
+                <Home data={data} />
+              </Route>
+            </Switch>
+          </Router>
         </div>
       </div>
-      <Router>
-        <Switch>
-          <Route path="/:invoiceId" exact></Route>
-
-          <Route path="/"></Route>
-        </Switch>
-      </Router>
     </React.Fragment>
   );
 }
