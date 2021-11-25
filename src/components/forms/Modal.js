@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
 import Backdrop from "./Backdrop";
@@ -6,6 +6,7 @@ import Input from "./Input";
 import { VALIDATOR_REQUIRE } from "./validators";
 import Select from "react-dropdown-select";
 import ItemList from "./ItemList.js";
+import useForm from "./formHook";
 //usecallback - wrap a function and define dependencies under which it should re-render
 //making sure that function inside another function is not recreated when original one is ran
 
@@ -20,32 +21,8 @@ let date = Date.now();
 const ModalOverlay = (props) => {
   const [itemList, setItemList] = useState([]);
 
-  const formReducer = (state, action) => {
-    switch (action.type) {
-      case "INPUT_CHANGE":
-        let formIsValid = true;
-        for (const inputId in state.inputs) {
-          if (inputId === action.inputId) {
-            formIsValid = formIsValid && action.isValid;
-          } else {
-            formIsValid = formIsValid && state.inputs[inputId].isValid;
-          }
-        }
-        return {
-          ...state,
-          inputs: {
-            ...state.inputs,
-            [action.inputId]: { value: action.value, isValid: action.isValid },
-          },
-          isValid: formIsValid,
-        };
-      default:
-        return state;
-    }
-  };
-
-  const [formState, dispatch] = useReducer(formReducer, {
-    inputs: {
+  const [formState, inputHandler] = useForm(
+    {
       bfStreetAddress: {
         value: "",
         isValid: false,
@@ -103,26 +80,16 @@ const ModalOverlay = (props) => {
         isValid: false,
       },
     },
-    isValid: true,
-  });
+    false
+  );
 
-  const inputHandler = useCallback((id, value, isValid) => {
-    console.log(id);
-    console.log(value);
-    console.log(isValid);
-    dispatch({
-      type: "INPUT_CHANGE",
-      value: value,
-      isValid: isValid,
-      inputId: id,
-    });
-  }, []);
   const invoiceSubmitHandler = (event) => {
     event.preventDefault();
     console.log(formState);
   };
   const selectHandler = (e) => {
     inputHandler("pterms", e[0].value, true);
+    console.log(e[0].value);
   };
 
   const content = (

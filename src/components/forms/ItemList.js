@@ -1,8 +1,9 @@
 import React from "react";
 
 const ItemList = (props) => {
-  const addItem = () => {
-    const newItem = { id: Math.random(), "description: ": "", quantity: "", price: "" };
+  const addItem = (e) => {
+    e.preventDefault();
+    const newItem = { id: Math.random(), name: "", quantity: "", price: "" };
     let newState = [...props.itemList, newItem];
     props.setItemList(newState);
   };
@@ -34,10 +35,10 @@ const ItemList = (props) => {
         return (
           <div key={key}>
             <input
-              key={`${item.id}+"description"`}
-              id={`${item.id}+"description"`}
-              className="description {item.id} {key}"
-              defaultValue={item.description}
+              key={`${item.id}+"name"`}
+              id={`${item.id}+"name"`}
+              className="name {item.id} {key}"
+              defaultValue={item.name}
               onInput={editItem}
             />
             <input
@@ -46,7 +47,7 @@ const ItemList = (props) => {
               key={`${item.id}+"price"`}
               className="price {item.id} {key}"
               onInput={editItem}
-              defaultValue={item.Quantity}
+              defaultValue={item.quantity}
             />
             <input
               type="number"

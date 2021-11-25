@@ -12,8 +12,8 @@ const InvoicePage = (props) => {
   //invoiceID is the name of the route used in App.js
   const invoiceID = useParams().invoiceId;
   const invoiceFound = data.filter((invoice) => invoice.id === invoiceID);
-  const { status, id, description, createdAt, paymentDue, clientEmail, total, clientAddress } = invoiceFound[0];
-  const { street, city, postCode, country } = invoiceFound[0].senderAddress;
+  // const { status, id, description, createdAt, paymentDue, clientEmail, total, clientAddress } = invoiceFound[0];
+  // const { street, city, postCode, country } = invoiceFound[0].senderAddress;
   return (
     <div>
       <div className="header">
@@ -33,8 +33,8 @@ const InvoicePage = (props) => {
         <div className="invoice-header">
           <div className="invoice-status">
             {" "}
-            <div> Status </div> <div> {status}</div>{" "}
-          </div>{" "}
+            <div> Status </div> <div> status</div>{" "}
+          </div>
           <div className="action-buttons">
             {" "}
             <button onClick={openShowUpdate}> Edit </button> <button> Delete </button> <button> Mark as Paid </button>

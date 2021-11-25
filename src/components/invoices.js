@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import arrow from "../assets/icon-arrow-right.svg";
 import "./invoices.css";
-import { Link, Route, BrowserRouter } from "react-router-dom";
-import InvoicePage from "./invoicePage";
+import { Link, BrowserRouter } from "react-router-dom";
 
 const InvoiceRow = (props) => {
   return (
