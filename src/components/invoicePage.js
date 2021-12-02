@@ -25,30 +25,30 @@ const InvoicePage = (props) => {
   const [paymentDue, setPaymentDue] = useState(invoiceFound.status);
   const [clientEmail, setclientEmail] = useState(invoiceFound.status);
   const [total, setTotal] = useState(invoiceFound.status);
-  const [clientAddress, setClientAddress] = useState(invoiceFound.status);
-  const [street, setStreet] = useState(invoiceFound.status);
-  const [city, setCity] = useState(invoiceFound.status);
-  const [postCode, setPostCode] = useState(invoiceFound.status);
+  //const [clientAddress, setClientAddress] = useState(invoiceFound.status);
+  //const [street, setStreet] = useState(invoiceFound.status);
+  // const [city, setCity] = useState(invoiceFound.status);
+  //const [postCode, setPostCode] = useState(invoiceFound.status);
 
-  const [country, setCountry] = useState(invoiceFound.status);
+  //const [country, setCountry] = useState(invoiceFound.status);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       const invoiceFound = props.data.filter((invoice) => invoice.id === invoiceID);
       setInvoice(invoiceFound);
       const { status, description, createdAt, paymentDue, clientEmail, total, clientAddress } = invoiceFound[0];
-      const { street, city, postCode, country } = invoiceFound[0].senderAddress;
+      //const { street, city, postCode, country } = invoiceFound[0].senderAddress;
       setStatus(status);
       setDescription(description);
       setCreatedAt(createdAt);
       setPaymentDue(paymentDue);
       setclientEmail(clientEmail);
       setTotal(total);
-      setClientAddress(clientAddress);
-      setStreet(street);
-      setCity(city);
-      setPostCode(postCode);
-      setCountry(country);
+      //setClientAddress(clientAddress);
+      //setStreet(street);
+      //setCity(city);
+      //setPostCode(postCode);
+      //setCountry(country);
     }, 100);
     return () => clearTimeout(timer);
   }, [props.data, invoiceID]);
@@ -91,7 +91,7 @@ const InvoicePage = (props) => {
 
         <div className="invoiceBody">
           Body {invoiceID} {description} {createdAt} {paymentDue}
-          {clientEmail} {total} {clientAddress} {street} {city} {postCode} {country}
+          {clientEmail} {total}
         </div>
       </div>
     </div>
