@@ -91,7 +91,7 @@ const InvoicePage = (props) => {
 
         <div className="invoiceBody">
           Body {invoiceID} {description} {createdAt} {paymentDue}
-          {clientEmail} {total} {clientAddress} {street} {city} {postCode} {country} }
+          {clientEmail} {total} {clientAddress} {street} {city} {postCode} {country}
         </div>
       </div>
     </div>
