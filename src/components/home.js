@@ -2,11 +2,8 @@ import React from "react";
 import Invoice from "./invoices";
 import Header from "./header/header";
 import "./home.css";
-import { DataContext } from "../shared/context";
-import { useContext } from "react/cjs/react.development";
 
 const Home = (props) => {
-  const { dataI } = useContext(DataContext);
   return (
     <div className="main-page-container">
       <div className="header-container">

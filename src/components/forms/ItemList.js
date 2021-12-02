@@ -1,6 +1,7 @@
 import React from "react";
 import "./itemList.css";
 import plusSign from "../../assets/icon-plus.svg";
+import deleteSign from "../../assets/icon-delete.svg";
 
 const ItemList = (props) => {
   const addItem = (e) => {
@@ -10,6 +11,7 @@ const ItemList = (props) => {
     props.setItemList(newState);
   };
   const removeItem = (e) => {
+    e.preventDefault();
     let newState = props.itemList.filter((item) => item.id !== parseFloat(e.target.id));
     props.setItemList(newState);
   };
@@ -66,12 +68,18 @@ const ItemList = (props) => {
               id={`${item.id}+"quantity"`}
               onInput={editItem}
               className="quantity {item.id} key"
-              defaultValue={item.price}
+              defaultValue={parseFloat(item.price).toFixed(2)}
             />
-            <span className="total-row"> {item.quantity * item.price}</span>
-            <button class="button-remove" key={`${item.id}+"button"`} id={item.id} onClick={removeItem}>
-              remove item{" "}
-            </button>
+            <span className="total-row"> {parseFloat(item.quantity * item.price).toFixed(2)}</span>
+            <input
+              type="image"
+              src={deleteSign}
+              alt="delete"
+              className="button-remove"
+              key={`${item.id}+"button"`}
+              id={item.id}
+              onClick={removeItem}
+            />
           </div>
         );
       })}

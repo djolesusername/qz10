@@ -250,19 +250,26 @@ const ModalOverlay = (props) => {
         </div>
         <ItemList id="itemlist" itemList={itemList} setItemList={setItemList} />
         <div className={`modal__content ${props.contentClass}`}> {props.children}</div>
+        {!formState.isValid && <p className="errorMessage"> All fields must be added</p>}
+        {!formState.isValid && <p className="errorMessage"> An item must be added</p>}
         <footer className={`modal__footer ${props.footerClass}`}>{props.footer}</footer>
-        {!formState.isValid && <p> Yo, fix it up</p>}
-        <button className="draft" type="submit">
-          Save as draft{" "}
-        </button>
-        <button
-          type="submit"
-          onClick={() => {
-            setStatus("Pending");
-          }}
-        >
-          Save & Send
-        </button>
+        <div class="form-buttons">
+          <button className="discard"> Discard</button>
+          <span> </span>
+
+          <button className="draft" type="submit">
+            Save as draft{" "}
+          </button>
+
+          <button
+            type="submit"
+            onClick={() => {
+              setStatus("Pending");
+            }}
+          >
+            Save & Send
+          </button>
+        </div>
       </form>
     </div>
   );

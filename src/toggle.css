@@ -52,3 +52,10 @@ button:hover {
   color: var(--buttobHovert9277FF);
 }
 */
+.errorMessage {
+  color: var(--red);
+}
+.discard {
+  background-color: white;
+  color: var(--greytext888EBO);
+}

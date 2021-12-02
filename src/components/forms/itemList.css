@@ -24,3 +24,11 @@
   border: 1px solid;
   margin: 0.7rem;
 }
+.button-remove {
+  background-color: none;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  z-index: 3;
+}

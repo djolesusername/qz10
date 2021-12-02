@@ -28,7 +28,7 @@
 }
 
 .modal__footer {
-  padding: 1rem 0.5rem;
+  padding: 0.5rem 1rem;
 }
 
 @media (min-width: 768px) {
@@ -105,4 +105,23 @@
 }
 .select {
   padding-top: 2rem;
+}
+.errorMessage {
+  margin: 1rem;
+}
+.form-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 23%);
+  padding: 1rem;
+}
+.form-buttons button {
+  margin-right: 0.5rem;
+}
+button {
+  border-radius: 120px;
+  text-align: center;
+  height: 2.3rem;
+  padding: 0.5rem 1rem;
+  margin: auto;
+  cursor: pointer;
 }

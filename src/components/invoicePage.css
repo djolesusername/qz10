@@ -13,3 +13,6 @@
 .action-buttons {
   grid-template-columns: auto auto auto;
 }
+.invoiceBody {
+  margin-top: 3rem;
+}

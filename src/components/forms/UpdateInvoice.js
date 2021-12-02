@@ -33,7 +33,7 @@ const ModalOverlay = (props) => {
   const context = useContext(DataContext);
   const handleUpdate = context.handleUpdate;
   const [itemList, setItemList] = useState(props.invoice.items);
-  const { id, description, createdAt, btName, clientEmail, paymentTerms, clientName } = props.invoice;
+  const { id, description, createdAt, clientEmail, paymentTerms, clientName } = props.invoice;
   const { street, city, postCode, country } = props.invoice.senderAddress;
   //const { btStreet, btCity, btPostCode, btCountry } = props.invoice.clientAddress;
 
@@ -132,6 +132,7 @@ const ModalOverlay = (props) => {
               onInput={inputHandler}
               value={formState.inputs.bfStreetAddress.value}
               validators={[VALIDATOR_REQUIRE()]}
+              errorText="can't be empty"
             />
           </div>
           <div className="grid-1outof3">
@@ -155,6 +156,7 @@ const ModalOverlay = (props) => {
               onInput={inputHandler}
               value={formState.inputs.bfPostCode.value}
               validators={[VALIDATOR_REQUIRE()]}
+              errorText="can't be empty"
             />
           </div>
           <div className="grid-1outof3">
@@ -166,6 +168,7 @@ const ModalOverlay = (props) => {
               onInput={inputHandler}
               value={formState.inputs.bfCountry.value}
               validators={[VALIDATOR_REQUIRE()]}
+              errorText="can't be empty"
             />
           </div>
         </div>
@@ -181,6 +184,7 @@ const ModalOverlay = (props) => {
               value={formState.inputs.btName.value}
               element="input"
               validators={[VALIDATOR_REQUIRE()]}
+              errorText="can't be empty"
             />
           </div>
           <div className="grid-full">
@@ -192,6 +196,7 @@ const ModalOverlay = (props) => {
               value={formState.inputs.btEmail.value}
               element="input"
               validators={[VALIDATOR_REQUIRE()]}
+              errorText="can't be empty"
             />
           </div>
           <div className="grid-full">
@@ -203,6 +208,7 @@ const ModalOverlay = (props) => {
               onInput={inputHandler}
               value={formState.inputs.btStreet.value}
               validators={[VALIDATOR_REQUIRE()]}
+              errorText="can't be empty"
             />
           </div>
           <div className="grid-1outof3">
@@ -214,6 +220,7 @@ const ModalOverlay = (props) => {
               onInput={inputHandler}
               value={formState.inputs.btCity.value}
               validators={[VALIDATOR_REQUIRE()]}
+              errorText="can't be empty"
             />
           </div>
           <div className="grid-1outof3">
@@ -225,6 +232,7 @@ const ModalOverlay = (props) => {
               onInput={inputHandler}
               value={formState.inputs.btPostCode.value}
               validators={[VALIDATOR_REQUIRE()]}
+              errorText="can't be empty"
             />
           </div>
           <div className="grid-1outof3">
@@ -236,6 +244,7 @@ const ModalOverlay = (props) => {
               onInput={inputHandler}
               value={formState.inputs.btCountry.value}
               validators={[VALIDATOR_REQUIRE()]}
+              errorText="can't be empty"
             />
           </div>
         </div>
@@ -252,7 +261,7 @@ const ModalOverlay = (props) => {
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
-          <div className="grid-1outof2">
+          <div className="grid-1outof2 select">
             <Select id="pterms" name="pterms" options={options} values={[options[pTerms]]} onChange={selectHandler} />
           </div>
         </div>
@@ -269,8 +278,16 @@ const ModalOverlay = (props) => {
           />
         </div>
         <ItemList id="itemlist" itemList={itemList} setItemList={setItemList} />
-        <button type="submit">Button </button>
+        <div class="form-buttons">
+          <span> </span>
+          <span> </span>
 
+          <button type="button" onClick={props.onCancel}>
+            Cancel{" "}
+          </button>
+
+          <button type="submit">Save Changes </button>
+        </div>
         <div className={`modal__content ${props.contentClass}`}> {props.children}</div>
         <footer className={`modal__footer ${props.footerClass}`}>{props.footer}</footer>
         {!formState.isValid && <p> Yo, fix it up</p>}
