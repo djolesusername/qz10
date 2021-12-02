@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
 import Backdrop from "./Backdrop";
@@ -7,6 +7,7 @@ import { VALIDATOR_REQUIRE } from "./validators";
 import Select from "react-dropdown-select";
 import ItemList from "./ItemList.js";
 import useForm from "./formHook";
+import { DataContext } from "../../shared/context";
 //usecallback - wrap a function and define dependencies under which it should re-render
 //making sure that function inside another function is not recreated when original one is ran
 
@@ -19,7 +20,10 @@ const options = [
 let date = Date.now();
 
 const ModalOverlay = (props) => {
+  const context = useContext(DataContext);
+  const handleAdd = context.handleAdd;
   const [itemList, setItemList] = useState([]);
+  const [status, setStatus] = useState(["draft"]);
 
   const [formState, inputHandler] = useForm(
     {
@@ -84,19 +88,19 @@ const ModalOverlay = (props) => {
   );
 
   const invoiceSubmitHandler = (event) => {
+    console.log(event.target);
     event.preventDefault();
-    console.log(formState);
+    handleAdd(formState, itemList, status);
+    props.close();
   };
   const selectHandler = (e) => {
     inputHandler("pterms", e[0].value, true);
-    console.log(e[0].value);
   };
 
   const content = (
     <div className={`modal ${props.className}`} style={props.style}>
       {/* <header className={`modal__header ${props.headerClass}`}></header> */}
       <form onSubmit={invoiceSubmitHandler}>
-        <button type="submit">Button </button>
         <div className="bill-from grid-3columns">
           {" "}
           Bill From
@@ -106,6 +110,7 @@ const ModalOverlay = (props) => {
               label="Street Address"
               id="bfStreetAddress"
               element="input"
+              errorText="can't be empty"
               onInput={inputHandler}
               validators={[VALIDATOR_REQUIRE()]}
             />
@@ -114,7 +119,7 @@ const ModalOverlay = (props) => {
             <Input
               type="text"
               label="City"
-              errorText="This field is required"
+              errorText="can't be empty"
               element="input"
               onInput={inputHandler}
               id="bfCity"
@@ -132,7 +137,15 @@ const ModalOverlay = (props) => {
             />
           </div>
           <div className="grid-1outof3">
-            <Input type="text" label="Country" element="input" id="bfCountry" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]} />
+            <Input
+              type="text"
+              errorText="can't be empty"
+              label="Country"
+              element="input"
+              id="bfCountry"
+              onInput={inputHandler}
+              validators={[VALIDATOR_REQUIRE()]}
+            />
           </div>
         </div>
         <div className="bill-to grid-3columns">
@@ -143,6 +156,7 @@ const ModalOverlay = (props) => {
               type="text"
               label="Client's name"
               id="btName"
+              errorText="can't be empty"
               onInput={inputHandler}
               element="input"
               validators={[VALIDATOR_REQUIRE()]}
@@ -153,8 +167,10 @@ const ModalOverlay = (props) => {
               type="email"
               label="Client's email"
               id="btEmail"
+              errorText="can't be empty"
               onInput={inputHandler}
               element="input"
+              placeholder="e.g.email@example.com"
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
@@ -163,30 +179,48 @@ const ModalOverlay = (props) => {
               type="text"
               label="Street Address"
               id="btStreet"
+              errorText="can't be empty"
               onInput={inputHandler}
               element="input"
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
           <div className="grid-1outof3">
-            <Input type="text" label="City" id="btCity" element="input" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]} />
+            <Input
+              type="text"
+              label="City"
+              id="btCity"
+              errorText="can't be empty"
+              element="input"
+              onInput={inputHandler}
+              validators={[VALIDATOR_REQUIRE()]}
+            />
           </div>
           <div className="grid-1outof3">
             <Input
               type="text"
               label="Post Code"
               id="btPostCode"
+              errorText="can't be empty"
               element="input"
               onInput={inputHandler}
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
           <div className="grid-1outof3">
-            <Input type="text" label="Country" id="btCountry" element="input" onInput={inputHandler} validators={[VALIDATOR_REQUIRE()]} />
+            <Input
+              type="text"
+              label="Country"
+              errorText="can't be empty"
+              id="btCountry"
+              element="input"
+              onInput={inputHandler}
+              validators={[VALIDATOR_REQUIRE()]}
+            />
           </div>
         </div>
-        <div className="grid-2columns">
-          <div className="grid-1outof2">
+        <div className="grid-2columns hold-date-select">
+          <div className="grid-1outof2 date">
             <Input
               type="date"
               label="Invoice date"
@@ -198,11 +232,11 @@ const ModalOverlay = (props) => {
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
-          <div className="grid-1outof2">
+          <div className="grid-1outof2 select">
             <Select id="pterms" name="pterms" options={options} values={[options[0]]} onChange={selectHandler} />
           </div>
         </div>
-        <div className="grid-full">
+        <div className="grid-full project-desription">
           <Input
             errorText="This field is required"
             type="text"
@@ -210,6 +244,7 @@ const ModalOverlay = (props) => {
             element="input"
             onInput={inputHandler}
             id="projectDesc"
+            placeholder="e.g.Graphic Design Service"
             validators={[VALIDATOR_REQUIRE()]}
           />
         </div>
@@ -217,6 +252,17 @@ const ModalOverlay = (props) => {
         <div className={`modal__content ${props.contentClass}`}> {props.children}</div>
         <footer className={`modal__footer ${props.footerClass}`}>{props.footer}</footer>
         {!formState.isValid && <p> Yo, fix it up</p>}
+        <button className="draft" type="submit">
+          Save as draft{" "}
+        </button>
+        <button
+          type="submit"
+          onClick={() => {
+            setStatus("Pending");
+          }}
+        >
+          Save & Send
+        </button>
       </form>
     </div>
   );

@@ -1,0 +1,26 @@
+.item-list {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  text-align: center;
+}
+.grid1outof5 {
+  display: grid;
+  grid-template-columns: 35% 10% 20% 20% 10%;
+  padding: 0.5rem;
+}
+.grid1outof5 input,
+.total-row {
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  text-align: center;
+}
+.total-row {
+  margin: auto;
+}
+.newItemButton {
+  grid-column: 1 / span5;
+  padding: 0.5rem;
+  border-radius: 800px;
+  border: 1px solid;
+  margin: 0.7rem;
+}

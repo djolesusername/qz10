@@ -9,10 +9,16 @@ const Header = (props) => {
   const [showNew, setShowNew] = useState(false);
   const openShowNew = () => setShowNew(true);
   const closeShowNew = () => setShowNew(false);
-
   return (
     <div className="header">
-      <Modal show={showNew} onCancel={closeShowNew} header={props.id} contentClass="new__modal-content" footerClass="new__modal-actions">
+      <Modal
+        show={showNew}
+        close={closeShowNew}
+        onCancel={closeShowNew}
+        header={props.id}
+        contentClass="new__modal-content"
+        footerClass="new__modal-actions"
+      >
         {" "}
         <div className="form-container"></div>
       </Modal>

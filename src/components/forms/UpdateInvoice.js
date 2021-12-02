@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
 import Backdrop from "./Backdrop";
 import Input from "./Input";
 import { VALIDATOR_REQUIRE } from "./validators";
 import Select from "react-dropdown-select";
+import { useHistory } from "react-router-dom";
+
 import ItemList from "./ItemList.js";
 import "../header/header.css";
 import { useForm } from "./formHook";
+import { DataContext } from "../../shared/context";
 
 const options = [
   { value: "30", label: "Net 30 days" },
@@ -26,16 +29,20 @@ const checkIndex = (paymentTerms) => {
 };
 
 const ModalOverlay = (props) => {
+  console.log(props);
+  const context = useContext(DataContext);
+  const handleUpdate = context.handleUpdate;
   const [itemList, setItemList] = useState(props.invoice.items);
-  const { id, description, createdAt, paymentDue, clientEmail, clientAddress, paymentTerms } = props.invoice;
+  const { id, description, createdAt, btName, clientEmail, paymentTerms, clientName } = props.invoice;
   const { street, city, postCode, country } = props.invoice.senderAddress;
+  //const { btStreet, btCity, btPostCode, btCountry } = props.invoice.clientAddress;
+
   const pTerms = checkIndex(paymentTerms);
   const selectHandler = (e) => {
     inputHandler("pterms", e[0].value, true);
     console.log(e[0].value);
   };
-  console.log(paymentDue);
-  console.log(clientAddress);
+
   const [formState, inputHandler] = useForm(
     {
       bfStreetAddress: {
@@ -55,7 +62,7 @@ const ModalOverlay = (props) => {
         isValid: true,
       },
       btName: {
-        value: "",
+        value: clientName,
         isValid: true,
       },
       btEmail: {
@@ -63,19 +70,19 @@ const ModalOverlay = (props) => {
         isValid: true,
       },
       btStreet: {
-        value: "",
+        value: props.invoice.clientAddress.street,
         isValid: true,
       },
       btCity: {
-        value: "",
+        value: props.invoice.clientAddress.city,
         isValid: true,
       },
       btPostCode: {
-        value: "",
+        value: props.invoice.clientAddress.postCode,
         isValid: true,
       },
       btCountry: {
-        value: "",
+        value: props.invoice.clientAddress.country,
         isValid: true,
       },
       invoiceDate: {
@@ -94,13 +101,20 @@ const ModalOverlay = (props) => {
         value: [],
         isValid: true,
       },
+      id: {
+        value: props.invoice.id,
+        isValid: true,
+      },
     },
     true
   );
+  let history = useHistory(); // Works!
 
   const invoiceUpdateSubmitHandler = (event) => {
+    history.push("/");
+
     event.preventDefault();
-    console.log(formState.inputs);
+    handleUpdate(formState, itemList);
   };
 
   const content = (

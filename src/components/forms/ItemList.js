@@ -1,9 +1,11 @@
 import React from "react";
+import "./itemList.css";
+import plusSign from "../../assets/icon-plus.svg";
 
 const ItemList = (props) => {
   const addItem = (e) => {
     e.preventDefault();
-    const newItem = { id: Math.random(), name: "", quantity: "", price: "" };
+    const newItem = { id: Math.random(), name: "", quantity: 1, price: 1 };
     let newState = [...props.itemList, newItem];
     props.setItemList(newState);
   };
@@ -15,7 +17,7 @@ const ItemList = (props) => {
   const editItem = (e) => {
     console.log(e.target.value);
     let inputEntry = e.target.id.split("+")[0]; //id
-    let inputProperty = e.target.id.split("+")[1]; //property changed
+    let inputProperty = e.target.id.split("+")[1].replace(/[^a-z0-9-]/g, ""); //property changed
 
     for (let i = 0; i < props.itemList.length; i++) {
       if (props.itemList[i].id === parseFloat(inputEntry)) {
@@ -29,11 +31,18 @@ const ItemList = (props) => {
   };
 
   return (
-    <div>
-      <button onClick={addItem}>Add item </button>
+    <div className="item-list">
+      <div className="grid1outof5">
+        <div className="">Item Name </div>
+        <div className=""> Qty.</div>
+        <div className=""> Price</div>
+        <div className=""> Total</div>
+
+        <div className=""> </div>
+      </div>
       {Array.from(props.itemList).map((item, key) => {
         return (
-          <div key={key}>
+          <div className="grid1outof5" key={key}>
             <input
               key={`${item.id}+"name"`}
               id={`${item.id}+"name"`}
@@ -44,6 +53,7 @@ const ItemList = (props) => {
             <input
               type="number"
               pattern="[0-9]*"
+              id={`${item.id}+"price"`}
               key={`${item.id}+"price"`}
               className="price {item.id} {key}"
               onInput={editItem}
@@ -53,16 +63,22 @@ const ItemList = (props) => {
               type="number"
               key={`${item.id}+"quantity"`}
               pattern="[0-9]*"
+              id={`${item.id}+"quantity"`}
               onInput={editItem}
               className="quantity {item.id} key"
               defaultValue={item.price}
             />
-            <button key={`${item.id}+"button"`} id={item.id} onClick={removeItem}>
+            <span className="total-row"> {item.quantity * item.price}</span>
+            <button class="button-remove" key={`${item.id}+"button"`} id={item.id} onClick={removeItem}>
               remove item{" "}
             </button>
           </div>
         );
       })}
+      <div className="newItemButton" onClick={addItem}>
+        <img src={plusSign} alt="new item" />
+        <span> Add New item </span>
+      </div>{" "}
     </div>
   );
 };

@@ -17,7 +17,10 @@ export default class Sidebar extends PureComponent {
         </div>
         <div className="navbar-bottom">
           <Toggle />
-          <img src={profilePic} alt="profilePic" className="profilePicture" />
+          <a href="/">
+            {" "}
+            <img src={profilePic} alt="profilePic" className="profilePicture" />
+          </a>
         </div>
       </React.Fragment>
     );

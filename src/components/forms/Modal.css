@@ -61,7 +61,7 @@
 }
 .grid-3columns {
   display: grid;
-  grid-template-columns: 32% 32% 32%;
+  grid-template-columns: 33% 33% 33%;
   padding: 1rem;
   padding-bottom: 0;
 }
@@ -79,9 +79,13 @@
 .grid-full {
   grid-column: 1 / span3;
 }
+.grid-full div input {
+  width: 90%;
+}
 .grid-full div input,
 .grid-1outof3 div input,
-.grid-1outof2 div input {
+.grid-1outof2 div input,
+.project-desription {
   padding: 0.5rem;
   margin-right: 0.5rem;
 }
@@ -89,4 +93,16 @@
 .grid-1outof3 div {
   padding: 0;
   margin: 0;
+}
+.select,
+.date {
+  margin: 0;
+  padding: 0;
+  top: 0;
+}
+.hold-date-select {
+  position: relative;
+}
+.select {
+  padding-top: 2rem;
 }
