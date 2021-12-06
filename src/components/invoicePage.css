@@ -16,3 +16,36 @@
 .invoiceBody {
   margin-top: 3rem;
 }
+.grid4outof4 {
+  display: grid;
+  grid-template-columns: 24% 24% 24% 24%;
+  padding: 1rem;
+}
+
+.big-text {
+  font-size: 1.33rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.light-text {
+  font-weight: 400;
+}
+.span2 {
+  grid-column: 3 / span2;
+}
+.row2 {
+  margin-top: 1rem;
+}
+.invoiceBody {
+  min-width: 50vw;
+}
+
+.item-rundown {
+  grid-template-columns: 36% 18% 18% 18%;
+}
+.rundown {
+  padding: 1rem;
+}
+.item-total {
+  background: blueviolet;
+}
