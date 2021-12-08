@@ -2,3 +2,9 @@
   display: grid;
   grid-template-columns: repeat(6, 16%);
 }
+.sizePlus1 {
+  font-size: 1.1rem;
+}
+.bold-text {
+  font-weight: 700;
+}

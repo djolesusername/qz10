@@ -15,8 +15,11 @@
 .modal__header {
   width: 100%;
   background: #2a006e;
-  color: white;
+
   padding: 1rem 0.5rem;
+}
+.custom-input {
+  margin-bottom: 0.5rem;
 }
 
 .modal__header h2 {
@@ -106,9 +109,7 @@
 .select {
   padding-top: 2rem;
 }
-.errorMessage {
-  margin: 1rem;
-}
+
 .form-buttons {
   display: grid;
   grid-template-columns: repeat(4, 23%);
@@ -124,4 +125,9 @@ button {
   padding: 0.5rem 1rem;
   margin: auto;
   cursor: pointer;
+}
+.edit-heading {
+  padding: 1rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }

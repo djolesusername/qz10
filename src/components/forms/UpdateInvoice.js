@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
+import "../../toggle.css";
 import Backdrop from "./Backdrop";
 import Input from "./Input";
 import { VALIDATOR_REQUIRE } from "./validators";
@@ -119,11 +120,15 @@ const ModalOverlay = (props) => {
 
   const content = (
     <div className={`modal ${props.className}`} style={props.style}>
+      <h2 className="edit-heading">
+        {" "}
+        Edit <span className="light-text">#</span>
+        {id}{" "}
+      </h2>
       <form onSubmit={invoiceUpdateSubmitHandler}>
         <div className="bill-from grid-3columns">
-          {id}
-          Bill From
-          <div className="grid-full">
+          <span className="special-text"> Bill From </span>
+          <div className="grid-full custom-input">
             <Input
               type="text"
               label="Street Address"
@@ -135,7 +140,7 @@ const ModalOverlay = (props) => {
               errorText="can't be empty"
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 custom-input">
             <Input
               type="text"
               label="City"
@@ -147,7 +152,7 @@ const ModalOverlay = (props) => {
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 custom-input">
             <Input
               type="text"
               label="Post Code"
@@ -159,7 +164,7 @@ const ModalOverlay = (props) => {
               errorText="can't be empty"
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 custom-input">
             <Input
               type="text"
               label="Country"
@@ -172,7 +177,7 @@ const ModalOverlay = (props) => {
             />
           </div>
         </div>
-        <div className="bill-to grid-3columns">
+        <div className="bill-to grid-3columns custom-input">
           {" "}
           Bill To
           <div className="grid-full">
@@ -187,7 +192,7 @@ const ModalOverlay = (props) => {
               errorText="can't be empty"
             />
           </div>
-          <div className="grid-full">
+          <div className="grid-full custom-input">
             <Input
               type="email"
               label="Client's email"
@@ -199,7 +204,7 @@ const ModalOverlay = (props) => {
               errorText="can't be empty"
             />
           </div>
-          <div className="grid-full">
+          <div className="grid-full custom-input">
             <Input
               type="text"
               label="Street Address"
@@ -211,7 +216,7 @@ const ModalOverlay = (props) => {
               errorText="can't be empty"
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 custom-input">
             <Input
               type="text"
               label="City"
@@ -223,7 +228,7 @@ const ModalOverlay = (props) => {
               errorText="can't be empty"
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 ">
             <Input
               type="text"
               label="Post Code"
@@ -235,7 +240,7 @@ const ModalOverlay = (props) => {
               errorText="can't be empty"
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 ">
             <Input
               type="text"
               label="Country"

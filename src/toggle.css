@@ -1,7 +1,7 @@
 .theme-dark {
   --buttonDefault: hsl(252, 94%, 67%);
   --buttobHovert9277FF: hsl(252, 100%, 73%);
-  --background-side: hsl(233, 31%, 17%);
+  --background-side: hsl(233, 30%, 21%);
   --background: hsl(233, 30%, 11%);
   --button3c252945: hsl(233, 30%, 21%);
   --button4textcDFE3FA: hsl (231, 73% 93%);
@@ -10,6 +10,9 @@
   --red: hsl(0, 80%, 63%);
   --lightRed: (0, 100%, 80%);
   --text: white;
+  --lightBackground: hsl(233, 30%, 21%);
+  --total: hsl(233, 30%, 11%);
+  --light-background: hsl(233, 31%, 17%);
 }
 .theme-light {
   --background: hsl(240, 27%, 98%);
@@ -17,6 +20,11 @@
   --background-side: hsl(233, 31%, 17%);
   --buttonDefault: hsl(252, 94%, 67%);
   --buttobHovert9277FF: hsl(252, 100%, 73%);
+  --lightBackground: hsl(240, 27%, 98%);
+  --purpleText: hsl(231, 37%, 63%);
+  --greytext888EBO: hsl(231, 20%, 61%);
+  --red: hsl(0, 80%, 63%);
+  --total: hsl(228, 29%, 7%);
 }
 html,
 #root {
@@ -44,18 +52,62 @@ nav {
 .logo-holder2 {
   background-color: var(--buttobHovert9277FF);
 }
-/*
+
 .regularButton button {
   color: var(--buttonDefault);
 }
 button:hover {
   color: var(--buttobHovert9277FF);
 }
-*/
+
 .errorMessage {
   color: var(--red);
 }
 .discard {
   background-color: white;
   color: var(--greytext888EBO);
+}
+.special-text {
+  color: var(--buttonDefault);
+}
+.light-text {
+  color: var(--greytext888EBO);
+}
+.purpleButton {
+  background-color: var(--buttonDefault);
+  color: white;
+  border: none;
+  outline: none;
+}
+.purpleButton:hover {
+  background-color: var(--buttobHovert9277FF);
+  color: white;
+}
+.dangerButton {
+  background-color: var(--red);
+  color: white;
+  border: none;
+  outline: none;
+  margin-right: 0.3rem;
+  margin-left: 0.3rem;
+}
+.dangerButton:hover {
+  color: white;
+  opacity: 0.8;
+}
+.whiteButton {
+  color: var(--greytext888EBO);
+  border: none;
+  outline: none;
+}
+.whiteButton:hover {
+  opacity: 0.7;
+  color: var(--greytext888EBO);
+}
+.item-rundown {
+  background-color: var(--lightBackground);
+}
+.item-total {
+  background-color: var(--total);
+  border-radius: 8px;
 }

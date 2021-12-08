@@ -21,6 +21,7 @@ const Home = (props) => {
               status={data.status}
               handleDelete={props.handleDelete}
               data={props.dataI}
+              invoiceDue={data.paymentDue}
             />
           );
         })}

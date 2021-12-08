@@ -104,7 +104,7 @@ const ModalOverlay = (props) => {
         <div className="bill-from grid-3columns">
           {" "}
           Bill From
-          <div className="grid-full">
+          <div className="grid-full custom-input">
             <Input
               type="text"
               label="Street Address"
@@ -115,7 +115,7 @@ const ModalOverlay = (props) => {
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 custom-input">
             <Input
               type="text"
               label="City"
@@ -126,7 +126,7 @@ const ModalOverlay = (props) => {
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 custom-input">
             <Input
               type="text"
               label="Post Code"
@@ -136,7 +136,7 @@ const ModalOverlay = (props) => {
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 custom-input">
             <Input
               type="text"
               errorText="can't be empty"
@@ -148,10 +148,10 @@ const ModalOverlay = (props) => {
             />
           </div>
         </div>
-        <div className="bill-to grid-3columns">
+        <div className="bill-to grid-3columns ">
           {" "}
           Bill To
-          <div className="grid-full">
+          <div className="grid-full custom-input">
             <Input
               type="text"
               label="Client's name"
@@ -162,7 +162,7 @@ const ModalOverlay = (props) => {
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
-          <div className="grid-full">
+          <div className="grid-full custom-input">
             <Input
               type="email"
               label="Client's email"
@@ -174,7 +174,7 @@ const ModalOverlay = (props) => {
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
-          <div className="grid-full">
+          <div className="grid-full custom-input">
             <Input
               type="text"
               label="Street Address"
@@ -185,7 +185,7 @@ const ModalOverlay = (props) => {
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 ">
             <Input
               type="text"
               label="City"
@@ -196,7 +196,7 @@ const ModalOverlay = (props) => {
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 ">
             <Input
               type="text"
               label="Post Code"
@@ -207,7 +207,7 @@ const ModalOverlay = (props) => {
               validators={[VALIDATOR_REQUIRE()]}
             />
           </div>
-          <div className="grid-1outof3">
+          <div className="grid-1outof3 ">
             <Input
               type="text"
               label="Country"
@@ -236,7 +236,7 @@ const ModalOverlay = (props) => {
             <Select id="pterms" name="pterms" options={options} values={[options[0]]} onChange={selectHandler} />
           </div>
         </div>
-        <div className="grid-full project-desription">
+        <div className="grid-full project-desription custom-input">
           <Input
             errorText="This field is required"
             type="text"
@@ -253,7 +253,7 @@ const ModalOverlay = (props) => {
         {!formState.isValid && <p className="errorMessage"> All fields must be added</p>}
         {!formState.isValid && <p className="errorMessage"> An item must be added</p>}
         <footer className={`modal__footer ${props.footerClass}`}>{props.footer}</footer>
-        <div class="form-buttons">
+        <div className="form-buttons">
           <button className="discard"> Discard</button>
           <span> </span>
 
@@ -264,7 +264,7 @@ const ModalOverlay = (props) => {
           <button
             type="submit"
             onClick={() => {
-              setStatus("Pending");
+              setStatus("pending");
             }}
           >
             Save & Send

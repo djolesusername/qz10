@@ -38,6 +38,9 @@
 }
 .invoiceBody {
   min-width: 50vw;
+  max-width: 55vw;
+  margin: auto;
+  margin-top: 2rem;
 }
 
 .item-rundown {
@@ -47,5 +50,13 @@
   padding: 1rem;
 }
 .item-total {
-  background: blueviolet;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.item-total div {
+  padding: 1rem;
+}
+.reallyBig {
+  font-size: 1.8rem;
+  text-align: center;
 }

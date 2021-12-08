@@ -95,12 +95,15 @@ const InvoicePage = (props) => {
           </div>
           <div className="action-buttons">
             {" "}
-            <button onClick={openShowUpdate}> Edit </button>{" "}
-            <button id={invoiceID} onClick={handleDeletewithR}>
+            <button className="whiteButton" onClick={openShowUpdate}>
+              {" "}
+              Edit{" "}
+            </button>{" "}
+            <button className="dangerButton" id={invoiceID} onClick={handleDeletewithR}>
               {" "}
               Delete{" "}
             </button>{" "}
-            <button> Mark as Paid </button>
+            <button className="purpleButton"> Mark as Paid </button>
           </div>
         </div>
       </div>
@@ -114,34 +117,34 @@ const InvoicePage = (props) => {
           <div> </div>
           <div> </div>
           <div>
-            <div>{street} </div>
-            <div> {city}</div>
-            <div>{postCode}</div>
-            <div>{country}</div>
+            <div className="light-text">{street} </div>
+            <div className="light-text"> {city}</div>
+            <div className="light-text">{postCode}</div>
+            <div className="light-text">{country}</div>
           </div>
         </div>
         <div className="grid4outof4">
           <div>
-            <div>Invoice Date</div>
+            <div className="light-text">Invoice Date</div>
             <div className="big-text">{createdAt} </div>
-            <div className="row2">Payment Due</div>
+            <div className="row2 light-text">Payment Due</div>
             <div className="big-text">{paymentDue}</div>
           </div>
           <div>
             {" "}
-            <div> Bill to</div>
-            <div className="big-text"> {clientName}</div> <div> {btStreet}</div>
-            <div> {btCity}</div>
-            <div> {btPostCode} </div>
-            <div> {btCountry}</div>
+            <div className="light-text"> Bill to</div>
+            <div className="big-text"> {clientName}</div> <div className="light-text"> {btStreet}</div>
+            <div className="light-text"> {btCity}</div>
+            <div className="light-text"> {btPostCode} </div>
+            <div className="light-text"> {btCountry}</div>
           </div>
           <div className="span2">
-            <div>Sent to </div>
+            <div className="light-text">Sent to </div>
             <div className="big-text"> {clientEmail}</div>
           </div>
         </div>
         <div className="rundown">
-          <div className="item-rundown grid4outof4">
+          <div className="item-rundown grid4outof4 light-text">
             <div> Item Name</div>
             <div> QTY.</div>
             <div> Price</div>
@@ -151,13 +154,16 @@ const InvoicePage = (props) => {
             return (
               <div className="item-rundown grid4outof4" id={key}>
                 <div> {item.name}</div>
-                <div> {item.quantity}</div>
-                <div> {item.price}</div>
+                <div className="light-text"> {item.quantity}</div>
+                <div className="light-text"> {item.price}</div>
                 <div> {item.total}</div>
               </div>
             );
           })}
-          <div class="item-total"> {total}</div>
+          <div class="item-total">
+            {" "}
+            <div> Amount Due</div> <div className="reallyBig"> £{total} </div>
+          </div>
         </div>
       </div>
     </div>
