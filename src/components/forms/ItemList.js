@@ -17,7 +17,6 @@ const ItemList = (props) => {
   };
 
   const editItem = (e) => {
-    console.log(e.target.value);
     let inputEntry = e.target.id.split("+")[0]; //id
     let inputProperty = e.target.id.split("+")[1].replace(/[^a-z0-9-]/g, ""); //property changed
 
@@ -26,7 +25,6 @@ const ItemList = (props) => {
         let newState = [...props.itemList];
         newState[i][inputProperty] = e.target.value;
         props.setItemList(newState);
-        console.log(props.itemList);
         return props.itemList;
       }
     }

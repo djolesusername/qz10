@@ -24,7 +24,7 @@
   --purpleText: hsl(231, 37%, 63%);
   --greytext888EBO: hsl(231, 20%, 61%);
   --red: hsl(0, 80%, 63%);
-  --total: hsl(228, 29%, 7%);
+  --total: hsl(233, 30%, 21%);
 }
 html,
 #root {
@@ -109,5 +109,12 @@ button:hover {
 }
 .item-total {
   background-color: var(--total);
-  border-radius: 8px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  color: white;
+}
+.invoiceBody,
+.header-invoice {
+  background-color: var(--light-background);
+  border-radius: 12px;
 }

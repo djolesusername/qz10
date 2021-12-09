@@ -4,8 +4,6 @@ import "./invoices.css";
 import { Link, BrowserRouter } from "react-router-dom";
 
 const InvoiceRow = (props) => {
-  console.log(props);
-
   return (
     <div className="invoice-row">
       <div className="bold-text"> {props.id}</div>

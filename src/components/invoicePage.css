@@ -60,3 +60,10 @@
   font-size: 1.8rem;
   text-align: center;
 }
+.header-invoice {
+  min-width: 50vw;
+  max-width: 55vw;
+  margin: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}

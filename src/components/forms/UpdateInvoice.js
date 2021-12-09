@@ -30,7 +30,6 @@ const checkIndex = (paymentTerms) => {
 };
 
 const ModalOverlay = (props) => {
-  console.log(props);
   const context = useContext(DataContext);
   const handleUpdate = context.handleUpdate;
   const [itemList, setItemList] = useState(props.invoice.items);
@@ -41,7 +40,6 @@ const ModalOverlay = (props) => {
   const pTerms = checkIndex(paymentTerms);
   const selectHandler = (e) => {
     inputHandler("pterms", e[0].value, true);
-    console.log(e[0].value);
   };
 
   const [formState, inputHandler] = useForm(

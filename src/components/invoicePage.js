@@ -11,7 +11,7 @@ import Home from "./home";
 
 const InvoicePage = (props) => {
   console.log(Home);
-  const { handleDelete } = useContext(DataContext);
+  const { handleDelete, handleToPaid } = useContext(DataContext);
   const [showUpdate, setShowUpdate] = useState(false);
   const openShowUpdate = () => setShowUpdate(true);
   const closeShowUpdate = () => setShowUpdate(false);
@@ -35,6 +35,9 @@ const InvoicePage = (props) => {
   const [country, setCountry] = useState(invoiceFound.status);
   const [clientName, setClientName] = useState(invoiceFound.clientName);
   const [itemList, setItemList] = useState([]);
+  const handleStatusPaid = () => {
+    handleToPaid(props.data, invoiceFound);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -73,9 +76,10 @@ const InvoicePage = (props) => {
     history.push("/");
     handleDelete(e);
   };
+
   return (
     <div className="main-page-container">
-      <div className="header-container header">
+      <div className="header-container header header-invoice">
         <UpdateInvoice
           show={showUpdate}
           onCancel={closeShowUpdate}
@@ -103,7 +107,10 @@ const InvoicePage = (props) => {
               {" "}
               Delete{" "}
             </button>{" "}
-            <button className="purpleButton"> Mark as Paid </button>
+            <button className="purpleButton" onClick={handleStatusPaid}>
+              {" "}
+              Mark as Paid{" "}
+            </button>
           </div>
         </div>
       </div>
@@ -144,7 +151,7 @@ const InvoicePage = (props) => {
           </div>
         </div>
         <div className="rundown">
-          <div className="item-rundown grid4outof4 light-text">
+          <div className="item-rundown item-rundown-top grid4outof4 light-text">
             <div> Item Name</div>
             <div> QTY.</div>
             <div> Price</div>
@@ -153,14 +160,14 @@ const InvoicePage = (props) => {
           {itemList.map((item, key) => {
             return (
               <div className="item-rundown grid4outof4" id={key}>
-                <div> {item.name}</div>
+                <div key={Date.now() + key}> {item.name}</div>
                 <div className="light-text"> {item.quantity}</div>
                 <div className="light-text"> {item.price}</div>
                 <div> {item.total}</div>
               </div>
             );
           })}
-          <div class="item-total">
+          <div className="item-total">
             {" "}
             <div> Amount Due</div> <div className="reallyBig"> £{total} </div>
           </div>

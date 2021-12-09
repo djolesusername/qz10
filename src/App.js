@@ -23,17 +23,23 @@ function App() {
     (e) => {
       let id = e.target.id;
       const current = [...dataI];
-      console.log(id);
       const newStateI = current.filter((invoice) => invoice.id !== id);
       setDataI(newStateI);
       localStorage.setItem("data", JSON.stringify(newStateI));
     },
     [dataI]
   );
+  const handleToPaid = useCallback((dataI, invoicePaid) => {
+    const current = [...dataI];
+    const changedInvoice = { ...invoicePaid[0], status: "paid" };
+    const newStateI = current.filter((invoice) => invoice.id !== changedInvoice.id);
+    newStateI[newStateI.length] = changedInvoice;
+    setDataI(newStateI);
+    localStorage.setItem("data", JSON.stringify(newStateI));
+  }, []);
 
   const handleUpdate = useCallback(
     (e, itemList, status) => {
-      console.log(e);
       let results = 0;
       itemList.forEach((a) => (results += parseFloat(a.price) * parseFloat(a.quantity)));
 
@@ -112,7 +118,9 @@ function App() {
   );
   return (
     <React.Fragment>
-      <DataContext.Provider value={{ dataI: dataI, handleAdd: handleAdd, handleDelete: handleDelete, handleUpdate: handleUpdate }}>
+      <DataContext.Provider
+        value={{ dataI: dataI, handleAdd: handleAdd, handleDelete: handleDelete, handleUpdate: handleUpdate, handleToPaid: handleToPaid }}
+      >
         <div className="content">
           <div className="sidebar">
             <Sidebar />

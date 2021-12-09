@@ -88,7 +88,6 @@ const ModalOverlay = (props) => {
   );
 
   const invoiceSubmitHandler = (event) => {
-    console.log(event.target);
     event.preventDefault();
     handleAdd(formState, itemList, status);
     props.close();
