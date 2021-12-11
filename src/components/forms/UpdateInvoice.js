@@ -111,9 +111,9 @@ const ModalOverlay = (props) => {
 
   const invoiceUpdateSubmitHandler = (event) => {
     history.push("/");
-
+    let paidStatus = props.invoice.status;
     event.preventDefault();
-    handleUpdate(formState, itemList);
+    handleUpdate(formState, itemList, paidStatus);
   };
 
   const content = (

@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Invoice from "./invoices";
 import Header from "./header/header";
 import "./home.css";
 
 const Home = (props) => {
+  const [itemsToDisplay, setItemsToDisplay] = useState(props.data);
+  const filterItems = (filteredArray) => {
+    console.log("in filterItem");
+    let updatedView = itemsToDisplay.filter((invoice) => invoice.status.indexof(filteredArray) !== -1);
+    setItemsToDisplay(updatedView);
+  };
   return (
     <div className="main-page-container">
       <div className="header-container">
-        <Header invoices={props} />
+        <Header filterItems={filterItems} invoices={props} />
       </div>
       <div className="invoice-list">
-        {props.data.map((data, key) => {
+        {itemsToDisplay.map((data, key) => {
           return (
             <Invoice
               key={key}

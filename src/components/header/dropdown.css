@@ -1,0 +1,10 @@
+.react-dropdown-select-option {
+  display: none !important;
+}
+.react-dropdown-select-content::before {
+  content: "Filter by status";
+  position: absolute;
+}
+.react-dropdown-select-content {
+  padding: 0.3rem;
+}

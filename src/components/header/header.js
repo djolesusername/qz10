@@ -27,7 +27,7 @@ const Header = (props) => {
         <h1>Invoices</h1> <p>There are {props.invoices.data.length} invoices </p>
       </div>
       <div className="header__end ">
-        <Dropdown />
+        <Dropdown filterItems={props.filterItems} invoices={props.invoices} />
 
         <div className="regularButton" onClick={openShowNew}>
           {" "}

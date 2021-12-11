@@ -36,6 +36,8 @@ const InvoicePage = (props) => {
   const [clientName, setClientName] = useState(invoiceFound.clientName);
   const [itemList, setItemList] = useState([]);
   const handleStatusPaid = () => {
+    history.push("/");
+
     handleToPaid(props.data, invoiceFound);
   };
 
@@ -159,7 +161,7 @@ const InvoicePage = (props) => {
           </div>
           {itemList.map((item, key) => {
             return (
-              <div className="item-rundown grid4outof4" id={key}>
+              <div className="item-rundown grid4outof4" key={key} id={key}>
                 <div key={Date.now() + key}> {item.name}</div>
                 <div className="light-text"> {item.quantity}</div>
                 <div className="light-text"> {item.price}</div>
