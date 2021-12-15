@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Invoice from "./invoices";
 import Header from "./header/header";
 import "./home.css";
-import { useEffect } from "react/cjs/react.development";
 
 const Home = (props) => {
   const [itemsToDisplay, setItemsToDisplay] = useState(props.data);
