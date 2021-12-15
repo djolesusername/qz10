@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import Invoice from "./invoices";
 import Header from "./header/header";
 import "./home.css";
+import { useEffect } from "react/cjs/react.development";
 
 const Home = (props) => {
   const [itemsToDisplay, setItemsToDisplay] = useState(props.data);
+  useEffect(() => {
+    setItemsToDisplay(props.data);
+  }, [props.data]);
+
   const filterItems = (filteredArray) => {
-    console.log("in filterItem");
-    let updatedView = itemsToDisplay.filter((invoice) => invoice.status.indexof(filteredArray) !== -1);
+    let filteredOptions = [];
+    let updatedView = [];
+    filteredArray.map((option) => filteredOptions.push(option.value));
+
+    updatedView = props.data.filter((invoice) => filteredOptions.indexOf(invoice.status) !== -1);
     setItemsToDisplay(updatedView);
   };
   return (

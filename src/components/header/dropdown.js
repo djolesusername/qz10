@@ -10,8 +10,6 @@ const ItemRenderer = (props) => {
     { value: "pending", label: "Pending" },
   ];
 
-  // props.filterItems();
-
   return (
     <React.Fragment>
       <Select
@@ -19,7 +17,7 @@ const ItemRenderer = (props) => {
         options={options}
         values={[...options]}
         placeholder="Filter by status"
-        onChange={(values) => console.log(values)}
+        onChange={(values) => props.filterItems(values)}
         itemRenderer={({ item, methods }) => (
           <StyledItem>
             {item.disabled ? (
